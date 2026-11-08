@@ -402,7 +402,7 @@
       }
       const order = {
         id: "OTPC-" + String(Date.now()).slice(-6),
-        email, name, street, zip, city, pay,
+        email, name, phone: String(data.get("phone") || "").trim(), street, zip, city, pay,
         items: items.map((i) => ({ title: i.title, qty: i.qty, price: i.price })),
         total: formatChf(total),
       };

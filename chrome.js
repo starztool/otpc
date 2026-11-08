@@ -58,9 +58,10 @@
           <button type="button" class="icon-btn" data-close aria-label="Schließen">${closeSvg}</button>
         </div>
         <form class="search-drawer__form" action="search.html" method="get" role="search">
-          <input class="field" type="search" name="q" placeholder="Produkt 1, Prebuild…" aria-label="Suchbegriff">
+          <input class="field" type="search" name="q" placeholder="Produkt suchen" aria-label="Suchbegriff" autocomplete="off">
           <button class="btn btn--solid" type="submit">Suchen</button>
         </form>
+        <div class="search-drawer__quick" data-search-hits></div>
       </div>
     </div>
     <div class="account-pop" id="account-pop">
@@ -96,4 +97,53 @@
       </div>
     </div>
   `);
+  if (!document.querySelector('link[rel="icon"]')) {
+    const ico = document.createElement("link");
+    ico.rel = "icon";
+    ico.href = "assets/otpc-logo.png";
+    document.head.appendChild(ico);
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const foot = document.querySelector("footer.footer");
+    if (!foot) return;
+    foot.innerHTML = `
+      <div class="wrap">
+        <div class="footer__grid">
+          <div>
+            <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+            <p>Custom PCs. Swiss Made.</p>
+            <p class="footer__mail"><a href="mailto:overtimepcs.support@gmail.com">overtimepcs.support@gmail.com</a></p>
+          </div>
+          <div>
+            <h3>Shop</h3>
+            <ul>
+              <li><a href="shop.html">Produkte</a></li>
+              <li><a href="konfigurator.html">Konfigurator</a></li>
+              <li><a href="contact.html">Kontakt</a></li>
+              <li><a href="login.html">Konto</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="impressum.html">Impressum</a></li>
+              <li><a href="datenschutz.html">Datenschutz</a></li>
+              <li><a href="agb.html">AGB</a></li>
+              <li><a href="versand.html">Versand</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="https://discord.gg/ZAGHdJxr2U">Discord · Ticket</a></li>
+              <li><a href="feedback.html">Bewertung</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__legal">
+          <span>© ${new Date().getFullYear()} OTPC</span>
+          <span>Swiss Made</span>
+        </div>
+      </div>`;
+  });
 })();

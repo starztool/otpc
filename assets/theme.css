@@ -1759,3 +1759,57 @@ body.is-intro { overflow: hidden; }
   .cfg__grid, .cfg-row { grid-template-columns: 1fr; }
   .cfg-row__price { text-align: left; }
 }
+
+.home-pcs { padding: 0 0 0; }
+.home-pcs .wrap { width: 100%; max-width: none; padding: 0; }
+.home-pcs .builds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: #000;
+  border: 0;
+}
+.home-pcs .build-card,
+.home-pcs .build-card > a { min-height: 74vh; }
+.home-pcs .build-card:hover { background: #000; }
+.home-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  padding: 1.6rem 1rem 0.4rem;
+  border-top: 1px solid var(--line);
+}
+.home-links a { color: var(--mute); font-weight: 600; }
+.home-links a:hover { color: var(--white); }
+.template-index .footer__grid { display: none; }
+.template-index .footer__logo { display: none; }
+.product__notes {
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+  color: var(--mute);
+  font-size: 0.92rem;
+}
+.product__notes p { margin: 0 0 0.45rem; }
+.also { padding: 2.4rem 0 3.2rem; border-top: 1px solid var(--line); }
+.also h2 { font-size: 1.1rem; margin-bottom: 1rem; font-weight: 600; }
+.also .builds { min-height: 0; }
+.also .build-card { min-height: 22rem; }
+.also .build-card__media img { height: 220px; }
+.legal-page h2 { font-size: 1.05rem; margin: 1.6rem 0 0.5rem; }
+.legal-page p, .legal-page li { color: var(--mute); margin-bottom: 0.7rem; }
+.legal-page ul { padding-left: 1.1rem; list-style: disc; margin-bottom: 1rem; }
+.checkout input[name="phone"] { margin-top: 0.5rem; }
+@media (max-width: 980px) {
+  .home-pcs .builds { grid-template-columns: 1fr; }
+  .home-pcs .build-card,
+  .home-pcs .build-card > a { min-height: 78vh; }
+  .home-links { gap: 1.4rem; }
+  .product__buy {
+    position: sticky;
+    bottom: 0;
+    z-index: 8;
+    background: #000;
+    padding: 0.75rem 0 0.4rem;
+  }
+}

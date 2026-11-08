@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Shop | OTPC</title>
+    <title>Produkte | OTPC</title>
+    <meta name="description" content="OTPC Prebuilds. Produkt 1, 2 und 3. Swiss Made, Versand in der Schweiz.">
+    <link rel="icon" href="assets/otpc-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,41 +13,14 @@
   </head>
   <body>
     <script src="chrome.js"></script>
-    <div class="shop-intro" data-shop-intro role="dialog" aria-label="OTPC">
-      <script>
-        try {
-          if (!/[?&]intro=1(?:&|$)/.test(location.search) && sessionStorage.getItem("otpc-shop-intro") === "1") {
-            document.currentScript.parentElement.hidden = true;
-          }
-        } catch (e) {}
-      </script>
-      <button class="shop-intro__skip" type="button" data-intro-skip>Überspringen</button>
-      <div class="shop-intro__world">
-        <div class="shop-intro__fog"></div>
-        <div class="shop-intro__floor"></div>
-        <div class="shop-intro__pc3d">
-          <img class="shop-intro__pc" src="assets/produkt-3.jpg" alt="" width="900" height="900">
-        </div>
-        <div class="shop-intro__mascot3d">
-          <img class="shop-intro__mascot" src="assets/otpc-mascot.jpg" alt="" width="640" height="360">
-        </div>
-        <div class="shop-intro__logo3d">
-          <p class="eyebrow">Swiss Made</p>
-          <img class="shop-intro__logo" src="assets/otpc-logo.png" alt="OTPC" width="960" height="360">
-        </div>
-        <span class="shop-intro__flare"></span>
-      </div>
-    </div>
     <main id="main">
-      <div class="wrap">
-        <div class="shop-head">
-          <div>
-            <p class="eyebrow">Shop</p>
-            <h1 class="display">Prebuilds</h1>
-          </div>
-          <p class="section__aside">Fertige PCs. Swiss Made.</p>
+      <section class="hero hero--welcome">
+        <div class="wrap hero__bar">
+          <p class="hero__lead">Produkte</p>
         </div>
-        <div class="builds" style="margin-bottom:4rem;">
+      </section>
+      <section class="home-pcs">
+        <div class="builds">
           <article class="build-card">
             <a href="produkt-1.html">
               <div class="build-card__top"><span>OTPC</span><span>Prebuild</span></div>
@@ -68,14 +43,9 @@
             </a>
           </article>
         </div>
-      </div>
+      </section>
     </main>
-    <footer class="footer">
-      <div class="wrap">
-        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
-        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
-      </div>
-    </footer>
+    <footer class="footer"></footer>
     <script src="assets/theme.js"></script>
     <script src="assets/live.js"></script>
   </body>

@@ -125,6 +125,25 @@
     }
   }
 
+  const catalog = [
+    { href: "produkt-1.html", title: "Produkt 1", price: "CHF 4'490", text: "weisses dual-chamber prebuild" },
+    { href: "produkt-2.html", title: "Produkt 2", price: "CHF 3'890", text: "schwarzes panorama prebuild" },
+    { href: "produkt-3.html", title: "Produkt 3", price: "CHF 3'590", text: "weisser mid-tower prebuild" }
+  ];
+  const searchInput = $("#search-drawer input[type='search']");
+  const hits = $("[data-search-hits]");
+  if (searchInput && hits) {
+    const paintHits = () => {
+      const q = (searchInput.value || "").trim().toLowerCase();
+      if (q.length < 1) { hits.innerHTML = ""; return; }
+      const list = catalog.filter((p) => (p.title + " " + p.text).toLowerCase().indexOf(q) >= 0);
+      hits.innerHTML = list.length
+        ? list.map((p) => `<a href="${p.href}">${p.title} · ${p.price}</a>`).join("")
+        : '<p style="color:var(--mute)">Nichts gefunden.</p>';
+    };
+    searchInput.addEventListener("input", paintHits);
+  }
+
   window.otpcSendOrder = async function (order) {
     const lines = (order.items || []).map((i) => i.title + " × " + i.qty + " · " + i.price).join("\n");
     await sendMail({
@@ -132,6 +151,7 @@
       name: order.name,
       email: order.email,
       bestellung: order.id,
+      telefon: order.phone || "",
       adresse: order.street + ", " + order.zip + " " + order.city,
       zahlung: order.pay,
       summe: order.total,
