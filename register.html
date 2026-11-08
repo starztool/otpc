@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Konto erstellen | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <div class="page-narrow">
+        <p class="eyebrow">Konto</p>
+        <h1 class="display">Konto erstellen</h1>
+        <p>Danach siehst du deine Bestellungen unter Konto.</p>
+        <form class="form" data-register>
+          <div class="form-grid">
+            <label class="field-lab">Vorname
+              <input class="field" type="text" name="customer[first_name]" autocomplete="given-name">
+            </label>
+            <label class="field-lab">Nachname
+              <input class="field" type="text" name="customer[last_name]" autocomplete="family-name">
+            </label>
+          </div>
+          <label class="field-lab">E-Mail
+            <input class="field" type="email" name="customer[email]" autocomplete="email" required>
+          </label>
+          <label class="field-lab">Passwort
+            <input class="field" type="password" name="customer[password]" autocomplete="new-password" required>
+          </label>
+          <button class="btn btn--solid" type="submit">Konto anlegen</button>
+          <p class="form-links"><a href="login.html">Schon ein Konto? Anmelden</a></p>
+        </form>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+    <script src="assets/customer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kasse | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <div class="checkout" data-checkout>
+        <form class="checkout__form" data-checkout-form>
+          <p class="eyebrow">OTPC</p>
+          <h1 class="display">Kasse</h1>
+          <fieldset>
+            <legend>Kontakt</legend>
+            <input class="field" type="email" name="email" placeholder="Email" autocomplete="email" required>
+          </fieldset>
+          <fieldset>
+            <legend>Lieferung</legend>
+            <input class="field" type="text" name="name" placeholder="Name" autocomplete="name" required>
+            <input class="field" type="text" name="street" placeholder="Strasse und Nr." autocomplete="address-line1" required>
+            <div class="checkout__row">
+              <input class="field" type="text" name="zip" placeholder="PLZ" autocomplete="postal-code" required>
+              <input class="field" type="text" name="city" placeholder="Ort" autocomplete="address-level2" required>
+            </div>
+            <p class="eyebrow">Schweiz</p>
+          </fieldset>
+          <fieldset>
+            <legend>Versand</legend>
+            <label class="pay-option">
+              <input type="radio" name="ship" value="post" checked>
+              <span>Die Post, versichert · CHF 0</span>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Zahlung</legend>
+            <label class="pay-option">
+              <input type="radio" name="pay" value="twint" required>
+              <span>TWINT</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pay" value="card">
+              <span>Karte · Zahlungslink per E-Mail</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="pay" value="rechnung">
+              <span>Rechnung / Überweisung</span>
+            </label>
+          </fieldset>
+          <p class="checkout__note" data-checkout-note></p>
+          <button class="btn btn--solid" type="submit" style="width:100%;">Bestellung absenden</button>
+          <p class="eyebrow" style="margin-top:0.8rem;">Keine Kartendaten auf dieser Seite. Die Zahlung kommt per Mail (TWINT, Link oder Rechnung).</p>
+        </form>
+        <aside class="checkout__sum" data-checkout-summary></aside>
+        <div class="checkout__thanks" data-checkout-thanks hidden>
+          <p class="eyebrow">Bestellt</p>
+          <h1 class="display">Danke.</h1>
+          <p>Bestellung <strong data-order-id></strong> · <span data-order-pay></span></p>
+          <p>Die Bestellung ist bei OTPC. Die Zahlung (TWINT, Link oder Rechnung) kommt per E-Mail.</p>
+          <a class="btn btn--solid" href="shop.html" style="margin-top:1.2rem;">Weiter shoppen</a>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Anmelden | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <div class="page-narrow">
+        <p class="eyebrow">Konto</p>
+        <h1 class="display">Anmelden</h1>
+        <p>Mit dem Konto siehst du deine Bestellungen auf diesem Gerät.</p>
+
+        <div id="recover" hidden>
+          <h2 class="cfg-title" style="margin-bottom:0.8rem;">Passwort zurücksetzen</h2>
+          <form class="form" id="recover-form">
+            <label class="field-lab">E-Mail
+              <input class="field" type="email" name="email" autocomplete="email" required>
+            </label>
+            <button class="btn btn--solid" type="submit">Link senden</button>
+            <button class="btn btn--ghost" type="button" data-show-login>Zurück zum Login</button>
+          </form>
+        </div>
+
+        <div id="login">
+          <form class="form" id="login-form">
+            <label class="field-lab">E-Mail
+              <input class="field" type="email" name="customer[email]" autocomplete="email" required>
+            </label>
+            <label class="field-lab">Passwort
+              <input class="field" type="password" name="customer[password]" autocomplete="current-password" required>
+            </label>
+            <button class="btn btn--solid" type="submit">Anmelden</button>
+            <p class="form-links">
+              <a href="#recover" data-show-recover>Passwort vergessen?</a>
+              <a href="register.html">Konto erstellen</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+    <script src="assets/customer.js"></script>
+  </body>
+</html>

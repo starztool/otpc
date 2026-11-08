@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Konto | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <div class="page-narrow page-narrow--wide">
+        <p class="eyebrow">Konto</p>
+        <p data-account-who></p>
+        <div class="account-nav">
+          <a href="account.html">Bestellungen</a>
+          <a href="account.html#profil">Profil</a>
+          <a href="login.html?out=1">Abmelden</a>
+        </div>
+        <h1 class="display" style="font-size:2rem;margin:1rem 0;">Bestellungen</h1>
+        <div class="order-list" data-account-orders></div>
+        <h2 id="profil" class="cfg-title" style="margin:2rem 0 0.6rem;">Profil</h2>
+        <p>Name und E-Mail von der Anmeldung. Die Lieferung nimmst du an der Kasse.</p>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+  </body>
+</html>

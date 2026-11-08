@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Suche | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main id="main">
+      <div class="wrap" style="padding:2.4rem 0 4rem;">
+        <p class="eyebrow">Suche</p>
+        <h1 class="display" style="font-size:clamp(2rem,5vw,3.4rem);margin:0.4rem 0 1.2rem;">Produkt suchen</h1>
+        <form action="search.html" method="get" class="search-form" role="search">
+          <input class="field" type="search" name="q" placeholder="Produkt 1, Prebuild…" aria-label="Suchbegriff">
+          <button class="btn btn--solid" type="submit">Suchen</button>
+        </form>
+        <div class="builds builds--fit" id="search-results" data-products></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal">
+          <a class="footer__discord" href="https://discord.gg/ZAGHdJxr2U">Discord · Ticket</a>
+          <span>© 2026 OTPC</span>
+          <span>Swiss Made</span>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+    <script>
+      const products = [
+        { href: "produkt-1.html", title: "Produkt 1", price: "CHF 4'490", img: "assets/produkt-1.jpg", text: "weisses dual-chamber prebuild" },
+        { href: "produkt-2.html", title: "Produkt 2", price: "CHF 3'890", img: "assets/produkt-2.jpg", text: "schwarzes panorama prebuild" },
+        { href: "produkt-3.html", title: "Produkt 3", price: "CHF 3'590", img: "assets/produkt-3.jpg", text: "weisser mid-tower prebuild" }
+      ];
+      const q = new URLSearchParams(location.search).get("q") || "";
+      document.querySelectorAll("main input[name='q']").forEach((input) => { input.value = q; });
+      const needle = q.trim().toLowerCase();
+      const hits = products.filter((p) => !needle || (p.title + " " + p.text + " prebuild").toLowerCase().includes(needle));
+      const box = document.querySelector("[data-products]");
+      box.innerHTML = hits.length ? hits.map((p) => `
+        <article class="build-card">
+          <a href="${p.href}">
+            <div class="build-card__top"><span>OTPC</span><span>Prebuild</span></div>
+            <div class="build-card__media"><img src="${p.img}" alt="${p.title}"></div>
+            <div class="build-card__foot"><span class="build-card__name">${p.title}</span><span class="build-card__price">${p.price}</span></div>
+          </a>
+        </article>
+      `).join("") : '<p style="color:var(--mute);padding:1.2rem;">Nichts gefunden.</p>';
+    </script>
+  </body>
+</html>

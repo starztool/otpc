@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Produkt 1 | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <section class="product">
+        <div class="product__media">
+          <img src="assets/produkt-1.jpg" alt="Produkt 1">
+        </div>
+        <div class="product__info">
+          <p class="eyebrow">OTPC · Swiss Made</p>
+          <h1 class="display">Produkt 1</h1>
+          <div class="product__price">CHF 4'490</div>
+          <p class="product__text">Weisses Dual-Chamber Prebuild. Vertical GPU, Custom-Loop, LCD. Gebaut und getestet in der Schweiz.</p>
+          <form data-add data-title="Produkt 1" data-price="CHF 4'490">
+            <input type="hidden" name="id" value="produkt-1">
+            <div class="qty" data-qty>
+              <button type="button" data-d="-1">−</button>
+              <span data-qty-val>1</span>
+              <input type="hidden" name="quantity" value="1">
+              <button type="button" data-d="1">+</button>
+            </div>
+            <div class="product__buy">
+              <button class="btn btn--solid" type="submit">In den Warenkorb</button>
+              <button class="btn btn--ghost" type="button" data-buy>Jetzt kaufen</button>
+            </div>
+          </form>
+          <table class="spec-table">
+            <tr><th>Gehäuse</th><td>White Dual-Chamber Glas</td></tr>
+            <tr><th>GPU</th><td>GeForce RTX, vertikal</td></tr>
+            <tr><th>Kühlung</th><td>360 AIO, weisse Schläuche</td></tr>
+            <tr><th>Finish</th><td>All-white</td></tr>
+            <tr><th>Herkunft</th><td>Swiss Made</td></tr>
+            <tr><th>Service</th><td>Zusammenbau und Test in der Schweiz</td></tr>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+  </body>
+</html>

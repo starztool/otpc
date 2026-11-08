@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Feedback | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <div class="wrap feedback-page">
+        <p class="eyebrow">Feedback</p>
+        <h1 class="display feedback-page__title">Bewertung posten</h1>
+        <p class="feedback-page__lead">Wähl deine Bestellung, schick ein Bild, gib bis zu 5 Sterne und schreib dazu.</p>
+        <form class="feedback-form" id="feedback-form" data-feedback>
+          <label class="field-lab">Bestellung
+            <select class="field" name="order" required>
+              <option value="">Bestellung wählen</option>
+              <option value="#1001">#1001 · Produkt 1</option>
+              <option value="#1002">#1002 · Produkt 2</option>
+              <option value="#1003">#1003 · Produkt 3</option>
+            </select>
+          </label>
+          <div class="field-lab">
+            <span>Sterne</span>
+            <div class="stars" data-stars data-value="0">
+              <input type="hidden" name="stars" value="">
+              <button type="button" data-star="1" aria-label="1 Stern">★</button>
+              <button type="button" data-star="2" aria-label="2 Sterne">★</button>
+              <button type="button" data-star="3" aria-label="3 Sterne">★</button>
+              <button type="button" data-star="4" aria-label="4 Sterne">★</button>
+              <button type="button" data-star="5" aria-label="5 Sterne">★</button>
+            </div>
+          </div>
+          <label class="field-lab">Bild
+            <input class="field" type="file" name="photo" accept="image/*">
+          </label>
+          <img class="feedback-preview" data-feedback-preview alt="" hidden>
+          <label class="field-lab">Dazu schreiben
+            <textarea class="field" name="message" rows="4" placeholder="Wie war der PC?" required></textarea>
+          </label>
+          <button class="btn btn--solid" type="submit">Posten</button>
+          <p class="feedback-note" data-feedback-note></p>
+        </form>
+        <div class="feedback-list" data-feedback-list></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+  </body>
+</html>

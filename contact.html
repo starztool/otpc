@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kontakt | OTPC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+  <body>
+    <script src="chrome.js"></script>
+    <main>
+      <section class="section" id="kontakt">
+        <div class="page-narrow">
+          <p class="eyebrow">Kontakt</p>
+          <h1 class="display">Schreib uns</h1>
+          <p>Fragen zu Builds, Versand oder einer Bestellung. Swiss Made, Antwort aus der Schweiz.</p>
+          <p><a href="mailto:overtimepcs.support@gmail.com">overtimepcs.support@gmail.com</a></p>
+          <form class="form form--wide" id="ContactForm">
+            <label class="field-lab">Name
+              <input class="field" type="text" name="contact[name]" autocomplete="name" required>
+            </label>
+            <label class="field-lab">E-Mail
+              <input class="field" type="email" name="contact[email]" autocomplete="email" required>
+            </label>
+            <label class="field-lab">Telefon (optional)
+              <input class="field" type="tel" name="contact[phone]" autocomplete="tel">
+            </label>
+            <label class="field-lab">Betreff
+              <input class="field" type="text" name="contact[Betreff]" required>
+            </label>
+            <label class="field-lab">Nachricht
+              <textarea class="field" name="contact[body]" rows="6" required></textarea>
+            </label>
+            <button class="btn btn--solid" type="submit">Nachricht senden</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap">
+        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
+        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
+      </div>
+    </footer>
+    <script src="assets/theme.js"></script>
+    <script src="assets/live.js"></script>
+    <script src="assets/customer.js"></script>
+  </body>
+</html>
