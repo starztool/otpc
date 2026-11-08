@@ -4,6 +4,7 @@
   let session = null;
   try { session = JSON.parse(localStorage.getItem("otpc-session") || "null"); } catch (e) { session = null; }
   document.write(`
+    <a class="skip-link" href="#main">Zum Inhalt</a>
     <header class="header">
       <div class="header__inner">
         <div class="header__brand">
@@ -44,6 +45,7 @@
           <div class="menu-group">
             <h3>OTPC</h3>
             <a href="about.html"${here === "about.html" ? ' class="is-active"' : ""}>Über uns</a>
+            <a href="faq.html"${here === "faq.html" ? ' class="is-active"' : ""}>FAQ</a>
             <a href="contact.html"${here === "contact.html" ? ' class="is-active"' : ""}>Kontakt</a>
             <a href="${session ? "account.html" : "login.html"}"${here === "login.html" || here === "account.html" || here === "register.html" ? ' class="is-active"' : ""}>${session ? "Konto" : "Anmelden"}</a>
           </div>
@@ -120,6 +122,7 @@
               <li><a href="shop.html">Produkte</a></li>
               <li><a href="konfigurator.html">Konfigurator</a></li>
               <li><a href="contact.html">Kontakt</a></li>
+              <li><a href="faq.html">FAQ</a></li>
               <li><a href="login.html">Konto</a></li>
             </ul>
           </div>

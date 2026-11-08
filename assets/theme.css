@@ -1058,6 +1058,7 @@ select.field { padding-right: 2rem; }
 .form-status p { color: var(--text); margin: 0 0 0.4rem; }
 .form-status ul { margin: 0; padding-left: 1.1rem; list-style: disc; }
 .form-status--ok { border-color: var(--white); }
+.form-status--err { border-color: #666; color: var(--text); }
 .errors { color: var(--text); font-size: 0.9rem; }
 
 .account-head {
@@ -1800,6 +1801,29 @@ body.is-intro { overflow: hidden; }
 .legal-page p, .legal-page li { color: var(--mute); margin-bottom: 0.7rem; }
 .legal-page ul { padding-left: 1.1rem; list-style: disc; margin-bottom: 1rem; }
 .checkout input[name="phone"] { margin-top: 0.5rem; }
+.home-facts {
+  text-align: center;
+  color: var(--mute);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem 2.4rem;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 2.4rem;
+  align-items: start;
+}
+.contact-aside {
+  border: 1px solid var(--line);
+  padding: 1.2rem 1.1rem;
+}
+.contact-aside p { margin-bottom: 0.7rem; }
+.contact-aside a { color: var(--text); }
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 980px) {
   .home-pcs .builds { grid-template-columns: 1fr; }
   .home-pcs .build-card,

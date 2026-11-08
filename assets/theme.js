@@ -270,6 +270,9 @@
     if (preview) { preview.hidden = true; preview.removeAttribute("src"); }
     if (note) note.textContent = "Gepostet.";
     paintFeedback();
+    if (typeof window.otpcSendFeedback === "function") {
+      window.otpcSendFeedback({ order, stars, text }).catch(() => {});
+    }
   });
   paintFeedback();
 
@@ -398,6 +401,10 @@
       const note = $("[data-checkout-note]", form);
       if (!email || !name || !street || !zip || !city || !pay) {
         if (note) note.textContent = "Bitte alle Felder ausfüllen.";
+        return;
+      }
+      if (!data.get("agb")) {
+        if (note) note.textContent = "Bitte AGB akzeptieren.";
         return;
       }
       const order = {

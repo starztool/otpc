@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Kasse | OTPC</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="assets/otpc-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +13,7 @@
   </head>
   <body>
     <script src="chrome.js"></script>
-    <main>
+    <main id="main">
       <div class="checkout" data-checkout>
         <form class="checkout__form" data-checkout-form>
           <p class="eyebrow">OTPC</p>
@@ -53,6 +55,10 @@
               <span>Rechnung / Überweisung</span>
             </label>
           </fieldset>
+          <label class="pay-option">
+            <input type="checkbox" name="agb" required>
+            <span>Ich akzeptiere die <a href="agb.html">AGB</a> und die <a href="datenschutz.html">Datenschutzerklärung</a>.</span>
+          </label>
           <p class="checkout__note" data-checkout-note></p>
           <button class="btn btn--solid" type="submit" style="width:100%;">Bestellung absenden</button>
           <p class="eyebrow" style="margin-top:0.8rem;">Keine Kartendaten auf dieser Seite. Die Zahlung kommt per Mail (TWINT, Link oder Rechnung).</p>
@@ -67,12 +73,7 @@
         </div>
       </div>
     </main>
-    <footer class="footer">
-      <div class="wrap">
-        <img class="footer__logo" src="assets/otpc-logo.png" alt="OTPC">
-        <div class="footer__legal"><span>© 2026 OTPC</span><span>Swiss Made</span></div>
-      </div>
-    </footer>
+    <footer class="footer"></footer>
     <script src="assets/theme.js"></script>
     <script src="assets/live.js"></script>
   </body>

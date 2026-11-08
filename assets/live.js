@@ -118,10 +118,71 @@
     } else {
       acc.innerHTML = mine.map((o) => (
         `<article class="order-list__row" style="display:block">
-          <strong>${o.id}</strong> · ${o.total} · ${o.pay}<br>
+          <a href="order.html?id=${encodeURIComponent(o.id)}"><strong>${o.id}</strong></a> · ${o.total} · ${o.pay}<br>
           <span style="color:var(--mute)">${o.street}, ${o.zip} ${o.city}</span>
         </article>`
       )).join("");
+    }
+  }
+
+  const recoverForm = $("#recover-form");
+  if (recoverForm) {
+    recoverForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = ((recoverForm.querySelector("[name='email']") || {}).value || "").trim();
+      const btn = recoverForm.querySelector("[type=submit]");
+      if (btn) btn.disabled = true;
+      try {
+        await sendMail({
+          _subject: "OTPC Passwort",
+          email,
+          nachricht: "Passwort-Anfrage für " + email
+        });
+      } catch (err) {}
+      recoverForm.innerHTML = '<p class="form-status form-status--ok">Schreib uns an overtimepcs.support@gmail.com, dann setzen wir das Konto zurück.</p>';
+    });
+  }
+
+  const orderView = $("[data-order-view]");
+  if (orderView) {
+    const me = session();
+    if (!me) {
+      location.replace("login.html");
+      return;
+    }
+    const id = new URLSearchParams(location.search).get("id") || "";
+    const o = orders().filter((x) => x.id === id)[0];
+    if (!o || (o.email || "").toLowerCase() !== (me.email || "").toLowerCase()) {
+      orderView.innerHTML = '<p class="eyebrow">Konto</p><h1 class="display">Bestellung</h1><p>Bestellung nicht gefunden.</p><p><a href="account.html">Zurück zum Konto</a></p>';
+    } else {
+      const payName = { card: "Karte · Zahlungslink", twint: "TWINT", rechnung: "Rechnung" };
+      const lines = (o.items || []).map((i) =>
+        `<div class="order-line"><div><strong>${i.title}</strong></div><div class="order-line__meta"><span>× ${i.qty}</span><strong>${i.price}</strong></div></div>`
+      ).join("");
+      orderView.innerHTML = `
+        <p class="eyebrow">Bestellung</p>
+        <div class="account-head">
+          <h1 class="display">${o.id}</h1>
+          <a class="btn btn--ghost" href="account.html">Alle Bestellungen</a>
+        </div>
+        <p>Zahlung: ${payName[o.pay] || o.pay} · ${o.total}</p>
+        <div class="order-box">
+          ${lines}
+          <div class="order-totals">
+            <div class="line"><span>Versand Schweiz</span><span>CHF 0</span></div>
+            <div class="line total"><span>Summe</span><span>${o.total}</span></div>
+          </div>
+        </div>
+        <div class="address-grid" style="margin-top:2rem;">
+          <div>
+            <h2 class="cfg-title">Lieferung</h2>
+            <p>${o.name}<br>${o.street}<br>${o.zip} ${o.city}<br>Schweiz</p>
+          </div>
+          <div>
+            <h2 class="cfg-title">Kontakt</h2>
+            <p>${o.email}${o.phone ? "<br>" + o.phone : ""}</p>
+          </div>
+        </div>`;
     }
   }
 
@@ -143,6 +204,15 @@
     };
     searchInput.addEventListener("input", paintHits);
   }
+
+  window.otpcSendFeedback = async function (item) {
+    await sendMail({
+      _subject: "OTPC Feedback " + (item.order || ""),
+      bestellung: item.order || "",
+      sterne: String(item.stars || ""),
+      text: item.text || ""
+    });
+  };
 
   window.otpcSendOrder = async function (order) {
     const lines = (order.items || []).map((i) => i.title + " × " + i.qty + " · " + i.price).join("\n");

@@ -5,38 +5,48 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="robots" content="noindex">
     <title>Shop | OTPC</title>
+    <link rel="icon" href="assets/otpc-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/theme.css">
   </head>
   <body>
     <script src="chrome.js"></script>
-    <main>
-      <div class="page-narrow">
+    <main id="main">
+      <div class="page-narrow page-narrow--wide">
         <p class="eyebrow">OTPC</p>
         <h1 class="display">Shop</h1>
         <div id="gate">
-          <p>PIN für Bestellungen und Produkte.</p>
+          <p>PIN für Bestellungen auf diesem Gerät.</p>
           <label class="field-lab">PIN
-            <input class="field" id="pin" type="password">
+            <input class="field" id="pin" type="password" autocomplete="current-password">
           </label>
           <button class="btn btn--solid" type="button" id="open">Öffnen</button>
           <p class="note" id="note"></p>
         </div>
         <div id="panel" hidden>
-          <p>Neue Bestellungen kommen an <a href="mailto:overtimepcs.support@gmail.com">overtimepcs.support@gmail.com</a>. Die erste Bestellung musst du in der Mail von FormSubmit einmal bestätigen.</p>
-          <h2 class="cfg-title">Produkte im Shop</h2>
+          <p>Neue Bestellungen kommen an <a href="mailto:overtimepcs.support@gmail.com">overtimepcs.support@gmail.com</a>. Die erste Mail von FormSubmit einmal bestätigen.</p>
+          <h2 class="cfg-title">Produkte</h2>
           <p>Produkt 1 · CHF 4'490<br>Produkt 2 · CHF 3'890<br>Produkt 3 · CHF 3'590</p>
-          <p>Neue Produkte: Mail an overtimepcs.support@gmail.com mit Name, Preis, Bild. Dann kommt es auf die Website.</p>
-          <p><a class="btn btn--solid" href="index.html">Zum Shop</a></p>
+          <h2 class="cfg-title" style="margin-top:1.6rem;">Bestellungen auf diesem Gerät</h2>
+          <div id="orders"></div>
+          <p style="margin-top:1.2rem;"><a class="btn btn--solid" href="index.html">Zum Shop</a></p>
         </div>
       </div>
     </main>
+    <footer class="footer"></footer>
     <script>
       document.getElementById("open").onclick = function () {
         if (document.getElementById("pin").value === "otpc") {
           document.getElementById("gate").hidden = true;
           document.getElementById("panel").hidden = false;
+          var list = [];
+          try { list = JSON.parse(localStorage.getItem("otpc-orders") || "[]"); } catch (e) { list = []; }
+          document.getElementById("orders").innerHTML = list.length
+            ? list.map(function (o) {
+                return "<article class=\"order-list__row\" style=\"display:block\"><strong>" + (o.id || "") + "</strong> · " + (o.total || "") + " · " + (o.pay || "") + "<br><span style=\"color:var(--mute)\">" + (o.name || "") + " · " + (o.email || "") + "<br>" + (o.street || "") + ", " + (o.zip || "") + " " + (o.city || "") + "</span></article>";
+              }).join("")
+            : "<p style=\"color:var(--mute)\">Keine Bestellung in diesem Browser.</p>";
         } else {
           document.getElementById("note").textContent = "PIN stimmt nicht.";
         }

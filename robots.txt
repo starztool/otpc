@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://otpc.ch/sitemap.xml
+Disallow: /admin.html
+Disallow: /account.html
+Disallow: /checkout.html
+Disallow: /order.html
+Sitemap: https://starztool.github.io/otpc/sitemap.xml

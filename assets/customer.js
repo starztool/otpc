@@ -52,28 +52,4 @@
     }
   });
 
-  const shopify = typeof window.Shopify !== "undefined";
-  if (!shopify) {
-    $$("form.form").forEach((form) => {
-      form.addEventListener("submit", (e) => {
-        if (form.querySelector("[name='id']")) return;
-        e.preventDefault();
-        if (form.id === "login-form" || form.querySelector("[name='customer[first_name]']")) {
-          window.location.href = "account.html";
-          return;
-        }
-        let note = form.querySelector("[data-preview-note]");
-        if (!note) {
-          note = document.createElement("div");
-          note.className = "form-status form-status--ok";
-          note.setAttribute("data-preview-note", "");
-          form.prepend(note);
-        }
-        note.hidden = false;
-        note.textContent = form.id === "ContactForm"
-          ? "Danke, wir haben deine Nachricht und melden uns."
-          : "Wenn ein Konto mit dieser E-Mail existiert, ist der Reset-Link unterwegs.";
-      });
-    });
-  }
 })();
