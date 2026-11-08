@@ -276,21 +276,21 @@
   });
   paintFeedback();
 
-  $$("[data-add]").forEach((form) => {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const note = $("#cart-note");
-      try {
-        await addLine(form);
-      } catch {
-        if (note) note.textContent = "Konnte nicht in den Warenkorb.";
-        toggle($("#cart-drawer"), true);
-        return;
-      }
-      await refreshCart();
+  document.addEventListener("submit", async (e) => {
+    const form = e.target.closest("[data-add]");
+    if (!form) return;
+    e.preventDefault();
+    const note = $("#cart-note");
+    try {
+      await addLine(form);
+    } catch {
+      if (note) note.textContent = "Konnte nicht in den Warenkorb.";
       toggle($("#cart-drawer"), true);
-      if (note) note.textContent = "Im Warenkorb.";
-    });
+      return;
+    }
+    await refreshCart();
+    toggle($("#cart-drawer"), true);
+    if (note) note.textContent = "Im Warenkorb.";
   });
 
   document.addEventListener("click", async (e) => {
@@ -356,14 +356,17 @@
     if (pay) pay.hidden = false;
   }
 
-  const checkout = $("[data-checkout]");
-  if (checkout) {
+  function bootCheckout(shopData) {
+    const checkout = $("[data-checkout]");
+    if (!checkout) return;
     const items = shopify ? [] : previewCart.read();
     const summary = $("[data-checkout-summary]", checkout);
     const form = $("[data-checkout-form]", checkout);
     const thanks = $("[data-checkout-thanks]", checkout);
     const done = /(?:^|[?&])done=1(?:&|$)/.test(location.search);
-    const total = items.reduce((n, i) => n + parseChf(i.price) * i.qty, 0);
+    const shipCost = shopData && shopData.shipping ? Number(shopData.shipping.cost || 0) : 0;
+    const shipLabel = (shopData && shopData.shipping && shopData.shipping.label) || "Versand Schweiz";
+    const total = items.reduce((n, i) => n + parseChf(i.price) * i.qty, 0) + shipCost;
     if (shopify) location.replace(checkoutHref());
     if (done) {
       let order = null;
@@ -385,7 +388,7 @@
       summary.innerHTML = items.map((i) => (
         `<div class="line"><span>${esc(i.title)} × ${i.qty}</span><span>${formatChf(parseChf(i.price) * i.qty)}</span></div>`
       )).join("")
-        + `<div class="line"><span>Versand Schweiz</span><span>CHF 0</span></div>
+        + `<div class="line"><span>${esc(shipLabel)}</span><span>${formatChf(shipCost)}</span></div>
            <div class="line total"><span>Summe</span><span>${formatChf(total)}</span></div>
            <p class="eyebrow">inkl. MwSt.</p>`;
     }
@@ -412,6 +415,8 @@
         email, name, phone: String(data.get("phone") || "").trim(), street, zip, city, pay,
         items: items.map((i) => ({ title: i.title, qty: i.qty, price: i.price })),
         total: formatChf(total),
+        status: "open",
+        at: Date.now()
       };
       try { sessionStorage.setItem("otpc-last-order", JSON.stringify(order)); } catch {}
       if (note) note.textContent = "Bestellung wird gesendet…";
@@ -426,6 +431,8 @@
       }
     });
   }
+  if (window.otpcReady) window.otpcReady.then(bootCheckout);
+  else bootCheckout(window.__otpcShop || null);
 
   document.addEventListener("change", (e) => {
     const select = e.target.closest("[data-add] select");
@@ -471,15 +478,15 @@
     });
   }
 
-  $$("[data-qty]").forEach((wrap) => {
-    const input = $("input", wrap);
-    wrap.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
-      if (!btn || !input) return;
-      const next = Math.max(1, Number(input.value || 1) + Number(btn.dataset.d));
-      input.value = next;
-      wrap.querySelector("[data-qty-val]")?.replaceChildren(document.createTextNode(String(next)));
-    });
+  document.addEventListener("click", (e) => {
+    const wrap = e.target.closest("[data-qty]");
+    const btn = e.target.closest("[data-qty] button");
+    if (!wrap || !btn) return;
+    const input = wrap.querySelector("input[name='quantity']") || wrap.querySelector("input");
+    if (!input) return;
+    const next = Math.max(1, Number(input.value || 1) + Number(btn.dataset.d));
+    input.value = next;
+    wrap.querySelector("[data-qty-val]")?.replaceChildren(document.createTextNode(String(next)));
   });
 
   document.addEventListener("click", (e) => {

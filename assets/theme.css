@@ -1765,7 +1765,7 @@ body.is-intro { overflow: hidden; }
 .home-pcs .wrap { width: 100%; max-width: none; padding: 0; }
 .home-pcs .builds {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(var(--pc-cols, 3), 1fr);
   gap: 2px;
   background: #000;
   border: 0;

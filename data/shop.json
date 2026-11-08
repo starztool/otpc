@@ -1,0 +1,72 @@
+{
+  "updated": 1,
+  "products": [
+    {
+      "id": "produkt-1",
+      "title": "Produkt 1",
+      "price": 4490,
+      "image": "assets/produkt-1.jpg",
+      "text": "Weisses Dual-Chamber Prebuild. Vertical GPU, Custom-Loop, LCD. Gebaut und getestet in der Schweiz.",
+      "search": "weisses dual-chamber prebuild",
+      "specs": [
+        ["Gehäuse", "White Dual-Chamber Glas"],
+        ["GPU", "GeForce RTX, vertikal"],
+        ["Kühlung", "360 AIO, weisse Schläuche"],
+        ["Finish", "All-white"],
+        ["Herkunft", "Swiss Made"],
+        ["Service", "Zusammenbau und Test in der Schweiz"]
+      ],
+      "active": true,
+      "featured": true,
+      "stock": "in"
+    },
+    {
+      "id": "produkt-2",
+      "title": "Produkt 2",
+      "price": 3890,
+      "image": "assets/produkt-2.jpg",
+      "text": "Schwarzes Panorama-Gehäuse. Vertical GPU, Strimer, Wave-Panel. Gebaut und getestet in der Schweiz.",
+      "search": "schwarzes panorama prebuild",
+      "specs": [
+        ["Gehäuse", "Black Panorama Glas"],
+        ["GPU", "GeForce RTX, vertikal"],
+        ["Kabel", "White Strimer"],
+        ["Finish", "Matt schwarz"],
+        ["Herkunft", "Swiss Made"],
+        ["Service", "Zusammenbau und Test in der Schweiz"]
+      ],
+      "active": true,
+      "featured": true,
+      "stock": "in"
+    },
+    {
+      "id": "produkt-3",
+      "title": "Produkt 3",
+      "price": 3590,
+      "image": "assets/produkt-3.jpg",
+      "text": "Weisser Mid-Tower. Vertical GPU, viel Luft, clean. Gebaut und getestet in der Schweiz.",
+      "search": "weisser mid-tower prebuild",
+      "specs": [
+        ["Gehäuse", "White Mid-Tower Glas"],
+        ["GPU", "GeForce RTX, vertikal"],
+        ["Kühlung", "360 AIO"],
+        ["Finish", "All-white"],
+        ["Herkunft", "Swiss Made"],
+        ["Service", "Zusammenbau und Test in der Schweiz"]
+      ],
+      "active": true,
+      "featured": true,
+      "stock": "in"
+    }
+  ],
+  "payments": {
+    "twint": { "on": true, "number": "", "hint": "TWINT-Zahlungsaufforderung kommt per E-Mail." },
+    "card": { "on": true, "link": "", "hint": "Zahlungslink kommt per E-Mail. Keine Kartendaten auf der Website." },
+    "rechnung": { "on": true, "iban": "", "name": "OTPC", "bank": "", "hint": "Rechnung / Überweisung per E-Mail." }
+  },
+  "shipping": {
+    "label": "Die Post, versichert",
+    "cost": 0,
+    "note": "Nur Schweiz."
+  }
+}

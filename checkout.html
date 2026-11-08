@@ -37,11 +37,12 @@
             <legend>Versand</legend>
             <label class="pay-option">
               <input type="radio" name="ship" value="post" checked>
-              <span>Die Post, versichert · CHF 0</span>
+              <span data-ship-label>Die Post, versichert · CHF 0</span>
             </label>
           </fieldset>
           <fieldset>
             <legend>Zahlung</legend>
+            <div data-pay-methods>
             <label class="pay-option">
               <input type="radio" name="pay" value="twint" required>
               <span>TWINT</span>
@@ -54,6 +55,7 @@
               <input type="radio" name="pay" value="rechnung">
               <span>Rechnung / Überweisung</span>
             </label>
+            </div>
           </fieldset>
           <label class="pay-option">
             <input type="checkbox" name="agb" required>
@@ -68,12 +70,14 @@
           <p class="eyebrow">Bestellt</p>
           <h1 class="display">Danke.</h1>
           <p>Bestellung <strong data-order-id></strong> · <span data-order-pay></span></p>
-          <p>Die Bestellung ist bei OTPC. Die Zahlung (TWINT, Link oder Rechnung) kommt per E-Mail.</p>
+          <p>Die Bestellung ist bei OTPC. Die Zahlung kommt per E-Mail.</p>
+          <div data-pay-next></div>
           <a class="btn btn--solid" href="shop.html" style="margin-top:1.2rem;">Weiter shoppen</a>
         </div>
       </div>
     </main>
     <footer class="footer"></footer>
+    <script src="assets/catalog.js"></script>
     <script src="assets/theme.js"></script>
     <script src="assets/live.js"></script>
   </body>

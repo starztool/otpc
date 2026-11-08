@@ -32,7 +32,7 @@
         </div>
         <nav class="menu-panel" aria-label="Seiten">
           <div class="menu-group">
-            <a href="shop.html"${["shop.html", "produkt-1.html", "produkt-2.html", "produkt-3.html"].indexOf(here) >= 0 ? ' class="is-active"' : ""}>Produkte</a>
+            <a href="shop.html"${["shop.html", "produkt.html", "produkt-1.html", "produkt-2.html", "produkt-3.html"].indexOf(here) >= 0 ? ' class="is-active"' : ""}>Produkte</a>
           </div>
           <div class="menu-group">
             <h3>Bauen</h3>
